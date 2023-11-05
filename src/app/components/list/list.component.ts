@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
-import { Pokemon } from 'src/app/models/pokemon';
+import { Pokemon, PokemonIntro } from 'src/app/models/pokemon';
 import { PokemonService } from 'src/app/services/pokemon.service';
 
 @Component({
@@ -9,11 +9,13 @@ import { PokemonService } from 'src/app/services/pokemon.service';
   styleUrls: ['./list.component.css'],
 })
 export class ListComponent implements OnInit {
-  public pokemons: Pokemon[] = [];
+  public pokemons: PokemonIntro[] = [];
   constructor(private pokemonService: PokemonService) {}
 
   getPokemonsList(): void {
-    this.pokemonService.getPokemons().subscribe();
+    this.pokemonService
+      .getPokemons()
+      .subscribe((pokemons) => (this.pokemons = pokemons));
   }
 
   ngOnInit(): void {

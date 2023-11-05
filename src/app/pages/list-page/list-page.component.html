@@ -1,0 +1,14 @@
+<app-header></app-header>
+<mat-grid-list cols="5" rowHeight="20rem" gutterSize="2rem">
+  <mat-grid-tile *ngFor="let pokemon of pokemons">
+    <mat-card>
+      <mat-card-content>
+        <img mat-card-image [src]="pokemon.image" alt="pokemon.name" />{{pokemon.id}}
+        <mat-card-title>{{ pokemon.name | titlecase }}</mat-card-title>
+      </mat-card-content>
+      <mat-card-actions>
+        <button mat-raised-button color="primary" [routerLink]="[pokemon.id]">See details</button>
+      </mat-card-actions>
+    </mat-card>
+  </mat-grid-tile>
+</mat-grid-list>

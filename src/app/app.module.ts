@@ -7,18 +7,16 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './material/material.module';
 
 import { AppComponent } from './app.component';
-import { CardComponent } from './components/card/card.component';
+import { CardPageComponent } from './pages/card-page/card-page.component';
 import { HeaderComponent } from './components/header/header.component';
-import { LayoutPageComponent } from './pages/layout-page/layout-page.component';
-import { ListComponent } from './components/list/list.component';
+import { ListPageComponent } from './pages/list-page/list-page.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
-    LayoutPageComponent,
-    ListComponent,
-    CardComponent,
+    ListPageComponent,
+    CardPageComponent,
   ],
   imports: [
     BrowserModule,

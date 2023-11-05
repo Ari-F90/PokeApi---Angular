@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+
 import { map, Observable, tap } from 'rxjs';
 
-import { HttpClient } from '@angular/common/http';
-import { ResponseApi } from '../models/pokemon';
+import { ResponseApi, PokemonIntro } from '../models/pokemon';
 
 @Injectable({
   providedIn: 'root',
@@ -12,13 +13,13 @@ export class PokemonService {
 
   constructor(private http: HttpClient) {}
 
-  getPokemons() {
+  getPokemons(): Observable<PokemonIntro[]> {
     return this.http
       .get<ResponseApi>(`${this.apiUrl}/pokemon?limit=151`)
       .pipe(map(this.getPokemonProps));
   }
 
-  getPokemonProps(data: ResponseApi) {
+  getPokemonProps(data: ResponseApi): PokemonIntro[] {
     const list = data.results.map((pokemon) => {
       let name: string = pokemon.name;
       let id = pokemon.url.split('/')[6];
